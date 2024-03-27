@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import RegisterForm from './components/RegisterForm';
+import LoginForm from './components/LoginForm';
+import MeetingForm from './components/MeetingForm';
+import MeetingButton from './components/MeetingButton';
+import CameraAccess from './components/CameraAccess'; 
+import ScreenSharing from './components/ScreenSharing';
+const App = () => {
+    return (
+        <Router>
+            <div className="App">
+                <Switch>
+                    <Route path="/register" component={RegisterForm} />
+                    <Route path="/login" component={LoginForm} />
+                    <Route path="/meeting" component={MeetingForm} />
+                    <Route path="/meeting_button" component={MeetingButton} />
+                    <Route path="/camera" component={CameraAccess} />
+                    <Route path="/screen_sharing" component={ScreenSharing} />
+                </Switch>
+            </div>
+        </Router>
+    );
+};
 
 export default App;
