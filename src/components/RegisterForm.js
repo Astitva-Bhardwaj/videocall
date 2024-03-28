@@ -18,9 +18,10 @@ const RegisterForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            history.push('/login');
             await axios.post('http://localhost:8081/user/register', formData); 
             console.log('User registered successfully!');
-            history.push('/login');
+        
             // Redirect or show a success message as needed
         } catch (error) {
             console.error('Registration failed:', error);

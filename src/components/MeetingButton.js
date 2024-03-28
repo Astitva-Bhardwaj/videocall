@@ -1,12 +1,11 @@
-// MeetingButton.js
-
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 
 const MeetingButton = () => {
     const [cameraAccess, setCameraAccess] = useState('');
     const history = useHistory();
+
     const handleJoinNow = async (e) => {
         e.preventDefault();
         try {
@@ -23,17 +22,23 @@ const MeetingButton = () => {
             // Handle error gracefully, such as displaying an error message to the user
         }
     };
-    
 
     const handlePresent = async (e) => {
         e.preventDefault();
         setCameraAccess('false');
 
         try {
-            // Send a screen presentation request to the backend
+            // Update the value of the hidden input dynamically to "true"
+            const screenPresentInput = document.getElementById('screenPresentInput');
+            if (screenPresentInput) {
+                screenPresentInput.value = 'true'; // Set the value to "true"
+                console.log('screenPresent value:', screenPresentInput.value); 
+            }
+            history.push('/screen_sharing');
+            // Submit the form programmatically here or use axios to send the data
             await axios.post('http://localhost:8081/user/video/present', { screenPresent: 'true' });
             console.log('Screen presentation request sent successfully');
-            history.push('/screen_sharing');
+        
         } catch (error) {
             console.error('Error sending screen presentation request:', error);
             // Handle error gracefully, such as displaying an error message to the user
@@ -48,7 +53,8 @@ const MeetingButton = () => {
                 <button type="submit" id="joinNowBtn" name="joinNow" value="Join Now">Join Now</button>
             </form>
 
-            <form onSubmit={handlePresent}>
+            <form id="presentForm" onSubmit={handlePresent}>
+                {/* Update the value of the hidden input based on button click */}
                 <input type="hidden" id="screenPresentInput" name="screenPresent" value="false" />
                 <button type="submit" id="presentBtn" name="present" value="Present">Present</button>
             </form>
