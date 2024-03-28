@@ -12,7 +12,7 @@ const MeetingButton = () => {
             const stream = await navigator.mediaDevices.getUserMedia({ video: true });
             setCameraAccess('true');
             console.log('Camera access granted:', stream);
-            history.push('/camera_access');
+            history.push('/camera');
             
             // Submit the form programmatically here or use axios to send the data
             await axios.post('http://localhost:8081/user/video/join', { cameraAccess });

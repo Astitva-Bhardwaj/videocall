@@ -4,7 +4,7 @@ import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
 import MeetingForm from './components/MeetingForm';
 import MeetingButton from './components/MeetingButton';
-import CameraAccess from './components/CameraAccess'; 
+import Camera from './components/Camera'; 
 import ScreenSharing from './components/ScreenSharing';
 const App = () => {
     return (
@@ -15,7 +15,7 @@ const App = () => {
                     <Route path="/login" component={LoginForm} />
                     <Route path="/meeting" component={MeetingForm} />
                     <Route path="/meeting_button" component={MeetingButton} />
-                    <Route path="/camera" component={CameraAccess} />
+                    <Route path="/camera" component={Camera} />
                     <Route path="/screen_sharing" component={ScreenSharing} />
                 </Switch>
             </div>

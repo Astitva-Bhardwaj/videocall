@@ -20,11 +20,11 @@ const MeetingForm = () => {
     const handleJoinCallSubmit = async (e) => {
         e.preventDefault();
         try {
+            history.push('/camera');
             // Send a POST request to join the video call
             const response = await axios.post('http://localhost:8081/user/video/join/call', { joinCallId });
             console.log('Joined video call successfully!', response.data);
             // Redirect or show a success message as needed
-            history.push('/camera');
         } catch (error) {
             console.error('Error joining video call:', error);
         }
